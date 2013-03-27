@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Happy Collision Testing Functions
-Description: Defines some useful functions for testing purposes.
+Description: Defines some nice functionality that other plugins might be happy to rely on. Also defines some useful functions for testing purposes.
 Author: Don Denton
-Version: 1.2.2
+Version: 2.0
 Author URI: http://happycollision.com
 */
 
