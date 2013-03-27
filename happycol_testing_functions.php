@@ -31,6 +31,23 @@ function vommit($string) {
 function console($string) {
 	echo '<script type="text/javascript">console.log("'.$string.'");</script>';
 }
+//Add any warnings to wp-admin screens
+function hcwarn($message, $is_error = FALSE){
+	$hc_warning_message = get_option('hc_warning_message');
+	$hc_warning_message[]=array($message, $is_error);
+	update_option('hc_warning_message', $hc_warning_message);
+}
+add_action( 'admin_notices', 'custom_error_notice' );
+function custom_error_notice(){
+	$hc_warning_message = get_option('hc_warning_message');
+	if(is_array($hc_warning_message)) { foreach($hc_warning_message as $message){
+		echo ($message[1]) ? '<div class="error">' : '<div class="updated">';
+		echo is_array($message[0]) ? hcprint($message[0], true) : '<p>'.$message[0].'</p>';
+		echo '</div>';
+	}}
+	update_option('hc_warning_message','');
+}
+
 
 // Old habits...
 function ddprint($any_array, $return = false, $html = false) {
